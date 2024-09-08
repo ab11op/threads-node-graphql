@@ -11,7 +11,15 @@ app.get('/', (req, res) => {
 
 async function startServer() {
   app.use(express.json());
-  const graphQlServer = new ApolloServer({ typeDefs: ``, resolvers: {} });
+  const graphQlServer = new ApolloServer({ typeDefs: `
+  type Query{
+    hello: String
+  }
+  `, resolvers: {
+    Query:{
+        hello: ()=> "I am a gql Server"
+    }
+  } });
   await graphQlServer.start();
   app.use('/graphql', expressMiddleware(graphQlServer));
   app.listen(PORT, () => {
