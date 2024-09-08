@@ -7,7 +7,7 @@ import { expressMiddleware } from '@apollo/server/express4';
 app.get('/', (req, res) => {
   res.json({ message: 'Server is up and running !' });
 });
-//
+
 
 async function startServer() {
   app.use(express.json());
