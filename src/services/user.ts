@@ -65,4 +65,7 @@ export const userServices = {
       return error.stack ? error.stack : error;
     }
   },
+  decodeJwtToken: async (token: string) => {
+    return jwt.verify(token, JWT_SECRET);
+  },
 };
